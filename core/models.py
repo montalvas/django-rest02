@@ -14,6 +14,9 @@ class Curso(Base):
     titulo = models.CharField('Título', max_length=100)
     url = models.URLField(unique=True)
     
+    class Meta:
+        ordering = ['id']
+    
     def __str__(self):
         return self.titulo
     
@@ -27,6 +30,7 @@ class Avaliacao(Base):
     class Meta:
         verbose_name = 'Avaliação'
         verbose_name_plural = 'Avaliações'
+        ordering = ['id']
         # torna os campos abaixo como únicos
         constraints = [
         UniqueConstraint(fields=['email', 'curso'], name='unique email e curso')
